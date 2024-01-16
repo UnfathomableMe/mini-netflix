@@ -1,0 +1,49 @@
+$bgcolor : #221F1F;
+$txtcolor: #F5F5F1;
+
+body{
+  background-color: $bgcolor;
+  color: $txtcolor;
+  margin: 0;
+}
+
+.image-container {
+  position:relative;
+  transition: transform 0.2s;
+  overflow: hidden;
+}
+
+/* .image-container:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+} */
+
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  bottom: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 20px;
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
