@@ -1,5 +1,6 @@
 $bgcolor : #221F1F;
 $txtcolor: #F5F5F1;
+$font: Arial, Helvetica, sans-serif;
 
 body{
   background-color: $bgcolor;
@@ -46,4 +47,82 @@ body{
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  grid-gap: 20px;
+  height: 100vh;
+}
+
+.poster{
+  grid-column: 2;
+  padding: 20px;
+}
+
+.details{
+  grid-column: 3;
+  padding: 20px;
+  font-family: $font;
+}
+
+.heading2{
+  text-align: center;
+  color: red;
+}
+
+.movie-item {
+  position: relative;
+}
+
+.movie-poster-container {
+  position: relative;
+  overflow: hidden;
+}
+
+@mixin moviePosterStyles {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+@mixin movieTitleOverlayStyles {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movie-item {
+  position: relative;
+
+  .movie-poster-container {
+    position: relative;
+    overflow: hidden;
+
+    .movie-poster {
+      @include moviePosterStyles;
+    }
+
+    .movie-title-overlay {
+      @include movieTitleOverlayStyles;
+    }
+
+    &:hover {
+      .movie-poster {
+        transform: scale(1.1);
+      }
+
+      .movie-title-overlay {
+        opacity: 1;
+      }
+    }
+  }
 }
