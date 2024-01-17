@@ -19,13 +19,22 @@ useEffect(() => {
 
 return(
     <div>
-        <h2>Movie Details:</h2>
-        <img src={moviedetails.Poster} alt={moviedetails.Title}></img>
-        <p>Title: {moviedetails.Title}</p>
-        <p>Year: {moviedetails.Year}</p>
-        <p>Rating: {moviedetails.imdbRating}</p>
+        <h1 className='heading2'>Movie Details:</h1>
+        <div className='container'>
+            <div className='poster'>
+                <img src={moviedetails.Poster} alt={moviedetails.Title}></img>
+            </div>
+            <div className='details'>
+                <h3>Title: {moviedetails.Title}</h3>
+                <h3>Year: {moviedetails.Year}</h3>
+                <h3>Rating: {moviedetails.imdbRating}</h3>
+                <p><b>Description:</b> {moviedetails.Plot}</p>
+            </div>
+        </div>
+        
     </div>
 );
 }
 
 export default MovieDetails;
+
