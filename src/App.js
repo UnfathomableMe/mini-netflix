@@ -28,7 +28,8 @@ useEffect(()=>{
       <div className='movie-list-container'>
         <Routes>
           <Route path='/' element={<Landing movielist={movielist}></Landing>}></Route>
-          <Route path='/:imdbID' element={<MovieDetails></MovieDetails>}></Route>
+          <Route path='/movie/details/:imdbID' element={<MovieDetails></MovieDetails>}></Route>
+          {/* <Route path='/movie/details?movieId=:imdbID' element={<MovieDetails></MovieDetails>}></Route> */}
         </Routes>
           
         </div>
