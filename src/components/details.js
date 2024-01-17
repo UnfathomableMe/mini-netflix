@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 const MovieDetails= () =>{
 const { imdbID } = useParams();
 const [moviedetails, setmoviedetails] = useState({});
+const location = useLocation();
+const queryParams = new URLSearchParams(location.search);
+const queryParamIMDbID = queryParams.get('movieId');
 
 const fetchdetails = async () => {
-    const omdb_api = `http://www.omdbapi.com/?i=${imdbID}&apikey=4845c445`;
+    const omdb_api = `http://www.omdbapi.com/?apikey=4845c445&i=${imdbID || queryParamIMDbID}`;
 
     const response = await fetch(omdb_api);
     const convertToJSON = await response.json();
@@ -15,7 +18,7 @@ const fetchdetails = async () => {
 };
 useEffect(() => {
     fetchdetails();
-},[imdbID]);
+},[imdbID, queryParamIMDbID]);
 
 return(
     <div>
